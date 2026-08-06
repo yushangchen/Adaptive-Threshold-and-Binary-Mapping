@@ -33,26 +33,27 @@ SR = |Cp,2 - Cp,1| / mean(FWHM1,FWHM2)
 VR = f(Cp,v) / min[f(Cp,1),f(Cp,2)]
 ```
 
-Default operational decision:
+Default decision:
 
 ```text
-SR >= 1.5 and VR <= 0.8
+SR >= 1.5 and VR <= 0.8  -> bimodal-separated
+otherwise                -> bimodal-overlapped
 ```
 
-These values are configurable criteria, not universal physical constants.
+These are configurable admissibility criteria, not universal physical
+constants.
 
 ## Operational thresholds
 
-For every tap, candidate values are pooled over Reynolds number. Candidates
+For each tap, candidate values are pooled over Reynolds number. Candidates
 associated with the upper envelope of the baseline PDF are excluded.
-Transition-relevant candidates are grouped by boundary role. Median cluster
-values define:
+Transition-relevant candidate groups are summarized by their median values:
 
 ```text
 Tbasic,j > Tmod,j > Tcore,j
 ```
 
-These thresholds are then fixed for all Reynolds numbers.
+The resulting operational thresholds are fixed across Reynolds number.
 
 ## Binary mapping
 
@@ -73,7 +74,7 @@ B(t) = [b1(t),...,b12(t)]
 PatternID(t) = sum_j b_j(t) 2^(12-j)
 ```
 
-It is used only for compact counting.
+The decimal code is used only for compact counting.
 
 ## Mean active-tap count
 
@@ -94,24 +95,38 @@ Oh = sum_t sum_(j in height h) b_j(t) / (Nt Nh)
 P(q) = count[PatternID(t)=q] / Nt
 ```
 
-## Latest side-asymmetry index
+## Side-asymmetry index
 
-Let:
+At each sample, let `N+(t)` and `N-(t)` be the numbers of active taps on the
+positive- and negative-theta sides. Define
+
+```text
+s(t) = [N+(t)-N-(t)] / [N+(t)+N-(t)]
+```
+
+with `s(t)=0` when no tap is active. The primary SAI follows the manuscript
+definition:
+
+```text
+SAI = mean_t[s(t)]
+```
+
+This is a time-averaged signed side-bias measure. Its sign indicates the
+record-averaged preferred side. A value near zero may result from bilateral
+balance, inactive samples, or alternating positive- and negative-side
+preference; it does not prove instantaneous symmetry.
+
+For comparison, `atbm.computeMetrics` also returns an aggregate occupancy
+diagnostic:
 
 ```text
 A+ = sum_t N+(t)
 A- = sum_t N-(t)
+SAIAggregateOccupancy = (A+ - A-) / (A+ + A-)
 ```
 
-Then:
-
-```text
-SAI = (A+ - A-) / (A+ + A-)
-```
-
-Set `SAI = 0` when the denominator is zero. A near-zero SAI can result from
-alternating side preference or sparse activity and does not prove instantaneous
-bilateral symmetry.
+with a value of zero when the denominator is zero. In general, this aggregate
+quantity is not equal to the manuscript SAI and is not used as its replacement.
 
 ## Hierarchical pressure states
 
@@ -121,3 +136,7 @@ Level 1: Tmod <= Cp < Tbasic
 Level 2: Tcore <= Cp < Tmod
 Level 3: Cp < Tcore
 ```
+
+The level labels describe instantaneous pressure intensity. Temporal
+persistence must be evaluated from consecutive samples or dwell intervals, not
+from threshold depth alone.

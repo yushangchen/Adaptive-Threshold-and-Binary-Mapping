@@ -1,38 +1,64 @@
-# Validation protocol
+# Validation protocol — version 0.3.0
 
-## Algorithmic verification
+## Execution
 
-Use synthetic unimodal, separated-bimodal, and overlapped-bimodal PDFs.
-Confirm morphology, SR/VR behavior, and threshold-candidate existence.
-
-## Numerical sensitivity
-
-Evaluate:
-
-```text
-bin width: 0.0125, 0.025, 0.05 Cp
-smoothing span: 1, 3, 5, 7 bins
-record fraction: 25%, 50%, 75%, 100%
+```matlab
+setup;
+run("validation/run_all_validation.m");
 ```
 
-For archival work, use block bootstrap because pressure samples are temporally
-correlated.
+The runner executes the scripts listed below and then runs the MATLAB unit-test
+suite.
 
-## Threshold sensitivity
+## 1. Synthetic morphology verification
 
-Perturb fixed tap-wise thresholds and confirm whether the reported
-Reynolds-number-dependent transition sequence remains unchanged.
+`validate_synthetic_morphologies.m` evaluates representative unimodal,
+bimodal-separated, and bimodal-overlapped signals. It records the observed
+morphology, SR, VR, and retained candidates.
 
-## Mapping invariants
+## 2. Bin-width and smoothing sensitivity
 
-- tap reordering changes decimal identifiers but not active-tap count;
-- side inversion changes SAI sign but not magnitude;
-- all-zero activity produces SAI = 0;
-- missing pressure samples are not counted as active;
-- height occupancy depends only on taps assigned to that height.
+`validate_bin_width_and_smoothing.m` evaluates whether PDF-derived candidates
+are controlled by histogram discretization or smoothing span.
 
-## Scientific validation
+## 3. Record-length sensitivity
 
-Oil-film visualization is time integrated. It can provide qualitative
-consistency with Reynolds-number-dependent pressure-state trends, but it cannot
-validate instantaneous binary topology.
+`validate_record_length.m` evaluates candidate stability over selected record
+fractions. This is a convergence check, not a claim that individual samples are
+statistically independent.
+
+## 4. SR/VR decision sensitivity
+
+`validate_sr_vr_sensitivity.m` varies the nominal SR and VR cutoffs by ±20% for
+representative separated and overlapped bimodal signals. The script writes the
+complete decision grid to CSV and exports a decision-map figure.
+
+## 5. Bootstrap repeatability
+
+`validate_bootstrap_repeatability.m` performs 200 m-out-of-n bootstrap
+realizations. Each realization draws 80% of the original record length with
+replacement. Candidate deviations are normalized by the full-record IQR.
+
+This bootstrap test evaluates numerical repeatability of the PDF-based
+candidate extraction under finite-sample perturbation. Random resampling removes
+time order and therefore does not test physical stationarity, event duration,
+or temporal dependence. Block bootstrap or segmented-run analysis is required
+for those questions.
+
+## 6. Mapping and metric invariants
+
+The unit tests verify:
+
+- binary threshold mapping;
+- decimal pattern encoding;
+- hierarchical level assignment;
+- zero-activity SAI behavior;
+- the manuscript time-averaged SAI;
+- the distinction between manuscript SAI and aggregate occupancy bias;
+- representative separated-PDF classification.
+
+## Scientific interpretation
+
+Oil-film visualization is time integrated. It provides qualitative consistency
+with Reynolds-number-dependent pressure-state trends but does not validate an
+instantaneous binary topology.

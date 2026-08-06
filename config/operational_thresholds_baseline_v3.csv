@@ -1,0 +1,13 @@
+TapID,zD,thetaDeg,Side,HeightGroup,BitIndex,Tbasic,Source,Status
+z1_p90,1,90,1,1,1,-1.025,Manuscript Table 1,Reviewed baseline threshold
+z1_m90,1,-90,-1,1,2,-0.975,Manuscript Table 1,Reviewed baseline threshold
+z1_p110,1,110,1,1,3,-0.925,Manuscript Table 1,Reviewed baseline threshold
+z1_m110,1,-110,-1,1,4,-0.875,Manuscript Table 1,Reviewed baseline threshold
+z2_p90,2,90,1,2,5,-0.975,Manuscript Table 1,Reviewed baseline threshold
+z2_m90,2,-90,-1,2,6,-0.975,Manuscript Table 1,Reviewed baseline threshold
+z2_p110,2,110,1,2,7,-0.875,Manuscript Table 1,Reviewed baseline threshold
+z2_m110,2,-110,-1,2,8,-0.825,Manuscript Table 1,Reviewed baseline threshold
+z3p5_p90,3.5,90,1,3,9,-1.225,Manuscript Table 1,Reviewed baseline threshold
+z3p5_m90,3.5,-90,-1,3,10,-1.225,Manuscript Table 1,Reviewed baseline threshold
+z3p5_p110,3.5,110,1,3,11,-1.075,Manuscript Table 1,Reviewed baseline threshold
+z3p5_m110,3.5,-110,-1,3,12,-1.175,Manuscript Table 1,Reviewed baseline threshold
