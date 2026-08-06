@@ -69,7 +69,7 @@ the tap-specific operational thresholds:
 Once selected, these thresholds are held fixed across Reynolds number.
 
 <p align="center">
-  <img src="docs/images/results/fig08-operational-threshold-hierarchy.jpg"
+  <img src="docs/images/result/fig08-operational-threshold-hierarchy.jpg"
        alt="Operational threshold hierarchy"
        width="100%">
 </p>
@@ -88,7 +88,7 @@ height-wise state occupancy, binary-pattern probability, and complete-record
 side-asymmetry index.
 
 <p align="center">
-  <img src="docs/images/results/fig13-reynolds-number-state-summary.jpg"
+  <img src="docs/images/result/fig13-reynolds-number-state-summary.jpg"
        alt="Reynolds-number-dependent pressure-state statistics"
        width="100%">
 </p>
