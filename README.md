@@ -111,7 +111,7 @@ Level 3: Cp < Tcore
 ```
 
 <p align="center">
-  <img src="docs/images/results/fig14-hierarchical-pressure-state-map.png"
+  <img src="docs/images/results/fig14-hierarchical-pressure-state-map.jpg"
        alt="Hierarchical pressure-state map"
        width="100%">
 </p>
