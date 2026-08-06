@@ -1,4 +1,4 @@
-# Adaptive Threshold and Binary Mapping (AT-BM)
+﻿# Adaptive Threshold and Binary Mapping (AT-BM)
 
 MATLAB implementation of the **Adaptive Threshold and Binary Mapping (AT-BM)**
 framework for extracting local pressure-state boundaries and quantifying the
@@ -245,3 +245,4 @@ the final reviewed tap-wise threshold table.
 ## License
 
 No license is assigned in this draft. Add one only after author approval.
+
