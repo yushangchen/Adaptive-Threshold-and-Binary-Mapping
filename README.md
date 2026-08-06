@@ -7,6 +7,77 @@ pressure signals.
 
 This repository follows the latest manuscript methodology for a finite circular
 cylinder with aspect ratio 4.
+## Repository status
+
+This repository provides the MATLAB implementation, validation procedures,
+and representative outputs of the Adaptive Threshold and Binary Mapping
+(AT-BM) framework.
+
+The included synthetic example is directly executable. Exact reproduction of
+the experimental figures requires the original synchronized pressure dataset,
+the verified pressure-tap ordering, and the reviewed tap-specific operational
+threshold table.
+
+AT-BM produces **pressure-based operational state descriptions**. The derived
+binary and hierarchical states should not be interpreted as direct
+reconstructions of instantaneous separation or reattachment topology.
+
+## Method overview
+
+### PDF morphology and adaptive-threshold extraction
+
+Local pressure-coefficient PDFs are classified as unimodal,
+bimodal-separated, or bimodal-overlapped. Depending on the PDF morphology,
+the method retains chord-distance knee points, \(T_L\) and \(T_R\), or the
+inter-peak valley \(T_v\) as candidate pressure-state boundaries.
+
+![PDF morphology and adaptive-threshold extraction](docs/images/method/fig06-pdf-morphology-and-threshold-extraction.jpg)
+
+*Representative extraction of PDF-derived threshold candidates for the three
+supported PDF morphologies.*
+
+### Operational pressure-state hierarchy
+
+Candidate boundaries are pooled across the examined Reynolds numbers for each
+pressure tap. Recurrent transition-relevant clusters define the tap-specific
+operational thresholds \(T_{\mathrm{basic},j}\),
+\(T_{\mathrm{mod},j}\), and \(T_{\mathrm{core},j}\).
+
+Once selected, these operational thresholds are held fixed across Reynolds
+number.
+
+![Operational threshold hierarchy](docs/images/results/fig08-operational-threshold-hierarchy.jpg)
+
+*Representative clustering of PDF-derived candidates and the corresponding
+pressure-state hierarchy. The displayed values apply to the representative
+tap at \(z/D=2\), \(\theta=+90^\circ\), and are not universal thresholds for
+all taps.*
+
+## Representative results
+
+### Reynolds-number-dependent pressure-state statistics
+
+The binary maps are summarized using:
+
+- mean active-tap count;
+- height-wise state-1 occupancy;
+- pattern probability;
+- complete-record side-asymmetry index.
+
+![Reynolds-number-dependent pressure-state summary](docs/images/results/fig13-reynolds-number-state-summary.jpg)
+
+*Reynolds-number-dependent evolution of the global and height-resolved
+pressure-state statistics.*
+
+### Hierarchical pressure-state map
+
+The three operational boundaries generate four pressure-state levels:
+
+```text
+Level 0: Cp >= Tbasic
+Level 1: Tmod <= Cp < Tbasic
+Level 2: Tcore <= Cp < Tmod
+Level 3: Cp < Tcore
 
 ## Scientific scope
 
