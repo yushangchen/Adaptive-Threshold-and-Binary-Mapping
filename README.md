@@ -108,6 +108,75 @@ Level 0: Cp >= Tbasic
 Level 1: Tmod <= Cp < Tbasic
 Level 2: Tcore <= Cp < Tmod
 Level 3: Cp < Tcore
+```
+
+<p align="center">
+  <img src="docs/images/results/fig14-hierarchical-pressure-state-map.png"
+       alt="Hierarchical pressure-state map"
+       width="100%">
+</p>
+
+**Figure 4.** Representative synchronized multi-tap hierarchical
+pressure-state map. The hierarchy preserves pressure-state intensity while
+retaining the temporal and spatial organization of the pressure-tap array.
+
+---
+
+## Robustness and sensitivity analyses
+
+### 5. Histogram bin-width sensitivity
+
+The sensitivity of the PDF-derived candidate thresholds to histogram
+resolution is evaluated for representative unimodal, bimodal-separated, and
+bimodal-overlapped pressure distributions.
+
+<p align="center">
+  <img src="docs/images/validation/Appendix A Sensitivity of AT thresholds to bin width.jpg"
+       alt="Histogram bin-width sensitivity"
+       width="100%">
+</p>
+
+**Figure 5.** Sensitivity of the extracted candidate thresholds to histogram
+bin width. The analysis evaluates whether the principal PDF-derived boundaries
+remain stable under reasonable changes in discretization.
+
+---
+
+### 6. SR/VR modality-decision sensitivity
+
+The peak-separation ratio, \(SR\), and valley ratio, \(VR\), are used to
+distinguish separated and overlapped bimodal PDFs. Their influence is examined
+over a range of decision criteria.
+
+<p align="center">
+  <img src="docs/images/validation/Appendix A Sensitivity of PDF modality decision to SRVR criteria.jpg"
+       alt="SR and VR modality-decision sensitivity"
+       width="100%">
+</p>
+
+**Figure 6.** Sensitivity of PDF morphology classification to the selected
+\(SR\) and \(VR\) criteria. Representative separated and overlapped cases are
+used to identify regions of stable classification.
+
+---
+
+### 7. Bootstrap repeatability
+
+Bootstrap resampling is used to quantify the repeatability of the PDF-derived
+candidate thresholds. Threshold variation is normalized by the interquartile
+range of the corresponding pressure distribution.
+
+<p align="center">
+  <img src="docs/images/validation/Appendix A Bootstrap repeatability of AT-derived thresholds.jpg"
+       alt="Bootstrap repeatability of adaptive thresholds"
+       width="100%">
+</p>
+
+**Figure 7.** Bootstrap repeatability of the adaptive-threshold candidates for
+representative PDF morphologies. The distributions quantify sampling
+variability rather than Reynolds-number-dependent threshold adjustment.
+
+---
 
 ## Scientific scope
 
