@@ -1,0 +1,47 @@
+{
+  "Fs": 1000,
+  "recordDuration": 120,
+  "cpRange": [
+    -3.5,
+    0.0
+  ],
+  "binWidth": 0.025,
+  "smoothSpan": 3,
+  "minPeakProminenceFraction": 0.03,
+  "minPeakDistanceBins": 4,
+  "SRThreshold": 1.5,
+  "VRThreshold": 0.8,
+  "thresholdClusterCount": 3,
+  "representativeThresholds": {
+    "Tbasic": -0.975,
+    "Tmod": -1.975,
+    "Tcore": -2.475
+  },
+  "bootstrapReplicates": 500,
+  "bootstrapBlockLength": 1000,
+  "recordFractions": [
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "binWidthCandidates": [
+    0.0125,
+    0.025,
+    0.05
+  ],
+  "smoothSpanCandidates": [
+    1,
+    3,
+    5,
+    7
+  ],
+  "thresholdPerturbations": [
+    -0.1,
+    -0.05,
+    0,
+    0.05,
+    0.1
+  ],
+  "randomSeed": 42
+}

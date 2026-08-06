@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite the associated AT-BM manuscript and software release."
+title: "Adaptive Threshold and Binary Mapping (AT-BM)"
+type: software
+authors:
+  - family-names: Chen
+    given-names: Yu-Hsiang
+version: 0.2.0
+date-released: 2026-08-06
+repository-code: "https://github.com/yushangchen/Adaptive-Threshold-and-Binary-Mapping"
