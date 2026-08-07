@@ -1,16 +1,49 @@
 function cfg = defaultConfig()
-cfg.Fs=1000; cfg.recordDuration=120;
-cfg.cpRange=[-3.5 0]; cfg.binWidth=0.025; cfg.smoothSpan=3;
-cfg.minPeakProminenceFraction=0.03; cfg.minPeakDistanceBins=4;
-cfg.SRThreshold=1.5; cfg.VRThreshold=0.8;
-cfg.thresholdClusterCount=3; cfg.randomSeed=42;
-cfg.bootstrapReplicates=500; cfg.bootstrapBlockLength=1000;
-cfg.recordFractions=[0.25 0.50 0.75 1.00];
-cfg.binWidthCandidates=[0.0125 0.025 0.05];
-cfg.smoothSpanCandidates=[1 3 5 7];
-cfg.thresholdPerturbations=[-0.10 -0.05 0 0.05 0.10];
-cfg.representative.Tbasic=-0.975;
-cfg.representative.Tmod=-1.975;
-cfg.representative.Tcore=-2.475;
-cfg.operationalThresholds=table();
+%DEFAULTCONFIG Source-faithful defaults reconstructed from the original scripts.
+
+cfg.Fs = 1000;
+cfg.durationSeconds = 120;
+cfg.expectedSamples = 120000;
+cfg.expectedCases = 49;
+cfg.diameter = 0.15;
+
+cfg.hist.support = [-3.4, 0];
+cfg.hist.binWidth = 0.05;
+cfg.hist.smoothWin = 1;
+
+cfg.AT.minPromRatio = 0.05;
+cfg.AT.minDistBin = 3;
+cfg.AT.SRThreshold = 1.5;
+cfg.AT.VRThreshold = 0.80;
+
+cfg.pitot.column = 2;
+cfg.pitot.slope = 516.1045;
+cfg.pitot.offset = 5.9067;
+
+cfg.temperature.column = 3;
+cfg.temperature.scale = 10;
+
+cfg.timeColumn = 1;
+cfg.atmosphericPressure = 100950;
+cfg.airGasConstant = 287.05;
+cfg.sutherlandFactor = 1.458e-6;
+cfg.sutherlandConstant = 110.4;
+
+cfg.filePattern = '*.lvm';
+cfg.topK = 6;
+cfg.row1IsMSB = true;
+
+cfg.validation.binWidths = [0.02 0.03 0.04 0.05 0.06];
+cfg.validation.referenceBinIndex = 3;
+cfg.validation.representativeSmoothWin = 2;
+cfg.validation.unimodal = struct('tapName','Cpp90_2D','caseIdx',7);
+cfg.validation.separated = struct('tapName','Cpp90_2D','caseIdx',25);
+cfg.validation.overlapped = struct('tapName','Cpp110_1D','caseIdx',35);
+cfg.validation.figure4Overlapped = struct('tapName','Cpp70_1D','caseIdx',26);
+cfg.validation.overlappedMinPromRatio = 0.02;
+cfg.validation.overlappedSmoothWin = 7;
+cfg.validation.overlappedMinPeakDistanceCp = 0.12;
+cfg.validation.bootstrapCount = 200;
+cfg.validation.bootstrapFraction = 0.80;
+cfg.validation.randomSeed = 1;
 end

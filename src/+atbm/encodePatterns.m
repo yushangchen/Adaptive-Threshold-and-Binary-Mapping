@@ -1,6 +1,19 @@
-function id=encodePatterns(B,bitIndex)
-if nargin<2, bitIndex=1:size(B,2); end
-[~,ord]=sort(bitIndex); B=logical(B(:,ord)); n=size(B,2);
-assert(n<=52,"ATBM:TooManyBits","Exact encoding limited to 52 bits.");
-id=double(B)*2.^((n-1):-1:0)';
+function [state, binaryStrings, weights] = encodePatterns(index, row1IsMSB)
+%ENCODEPATTERNS Encode nSamples x nTaps logical states as decimal identifiers.
+
+if nargin < 2, row1IsMSB = true; end
+index = logical(index);
+nTaps = size(index,2);
+if row1IsMSB
+    weights = 2.^(nTaps-1:-1:0);
+else
+    weights = 2.^(0:nTaps-1);
+end
+state = uint16(double(index)*weights(:));
+if nargout > 1
+    binaryStrings = strings(size(index,1),1);
+    for k = 1:size(index,1)
+        binaryStrings(k) = string(sprintf('%d',index(k,:)));
+    end
+end
 end

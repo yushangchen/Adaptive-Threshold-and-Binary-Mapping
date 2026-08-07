@@ -1,12 +1,28 @@
-name: MATLAB tests
-on: [push, pull_request]
+name: MATLAB software tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: matlab-actions/setup-matlab@v2
-      - uses: matlab-actions/run-tests@v2
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v2
+
+      - name: Run software unit tests
+        uses: matlab-actions/run-command@v2
         with:
-          source-folder: src
-          select-by-folder: tests
+          command: setup; results = runtests("tests"); assertSuccess(results);
