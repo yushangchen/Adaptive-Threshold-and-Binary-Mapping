@@ -195,6 +195,72 @@ The original synchronized experimental pressure records are not distributed thro
 
 ---
 
+### 9. Spatial-sampling sensitivity
+
+A controlled spatial-subsampling analysis was performed to estimate how the spatial resolution of the 12-tap AT-BM map affects characterization of the transitional flow.
+
+The manuscript configuration uses 12 pressure taps:
+
+- `theta = +/-90 deg` and `+/-110 deg`;
+- `z/D = 1, 2, 3.5`.
+
+The 12-tap configuration was independently reduced to two six-tap subsets:
+
+- `+/-90 deg` only;
+- `+/-110 deg` only.
+
+The same reviewed tap-specific operational thresholds were retained for the corresponding taps. Therefore, the comparison changes the spatial sampling only and does not introduce a new threshold-selection procedure.
+
+The following quantities were compared over the complete Reynolds-number range:
+
+1. **normalized active-tap fraction**;
+2. **height-wise state-1 occupancy**;
+3. **side-asymmetry index (SAI)**.
+
+<p align="center">
+  <img src="figures/R1_spatial_sampling_active_fraction.png"
+       alt="Spatial-sampling sensitivity of global low-Cp occupancy"
+       width="90%">
+</p>
+
+**Figure 7.** Spatial-sampling sensitivity of the normalized active-tap fraction. The principal Reynolds-number-dependent transition progression is retained by both six-tap subsets, while the quantitative occupancy level depends on azimuthal sampling.
+
+<p align="center">
+  <img src="figures/R1_spatial_sampling_height_occupancy.png"
+       alt="Spatial-sampling sensitivity of height-wise occupancy"
+       width="90%">
+</p>
+
+**Figure 8.** Height-wise state-1 occupancy obtained from the 12-tap configuration and the two controlled six-tap subsets. The principal progression remains visible, while sensitivity to azimuthal sampling is more pronounced at some spanwise locations.
+
+<p align="center">
+  <img src="figures/R1_spatial_sampling_SAI.png"
+       alt="Spatial-sampling sensitivity of side-asymmetry index"
+       width="90%">
+</p>
+
+**Figure 9.** Spatial-sampling sensitivity of the complete-record side-asymmetry index. The asymmetry metric is more sensitive to azimuthal sampling than the global occupancy measures, particularly within the transitional Reynolds-number range.
+
+<p align="center">
+  <img src="figures/R1_spatial_sampling_deviation.png"
+       alt="Deviation from the manuscript 12-tap characterization"
+       width="90%">
+</p>
+
+**Figure 10.** Absolute differences between the six-tap subsets and the manuscript 12-tap characterization.
+
+Because the 12-tap active fraction and the height-wise occupancies are constructed from the combined `+/-90 deg` and `+/-110 deg` tap sets, the absolute deviations of the two six-tap subsets from the 12-tap reference are symmetric by construction for these averaged occupancy measures.
+
+The controlled subsampling analysis shows that the **principal Reynolds-number-dependent transition progression is preserved** when the spatial sampling is reduced from 12 taps to either six-tap subset. However, the quantitative occupancy level and, more strongly, the SAI depend on the azimuthal sampling configuration.
+
+The 12-tap array is therefore considered adequate for the **large-scale pressure-state evolution** addressed in the present study, while localized azimuthal structure and detailed asymmetry remain spatial-resolution limited.
+
+This analysis should be interpreted as a **spatial-subsampling sensitivity test**, not as proof that the 12-tap configuration resolves every instantaneous local flow structure.
+
+The corresponding analysis script is retained in `validation/`.
+
+---
+
 ## Scientific scope
 
 AT-BM contains two explicitly separated stages:
@@ -268,13 +334,14 @@ The repository includes validation of:
 - PDF smoothing sensitivity;
 - SR/VR modality-decision sensitivity;
 - finite-sample/bootstrap repeatability;
-- record-length convergence;
+- full-dataset record-length convergence;
+- spatial-subsampling sensitivity;
 - threshold perturbation;
 - pattern-encoding invariants;
 - SAI invariants;
 - tap-order and side-label checks.
 
-The full-dataset 120-s record-length analysis is retained separately in `validation/` because it requires the unpublished experimental dataset.
+The full-dataset record-length and spatial-subsampling analyses require the unpublished experimental dataset and are therefore retained as measured-data validation procedures rather than fully self-contained public examples.
 
 ## Reproducibility rules
 
@@ -286,6 +353,7 @@ The full-dataset 120-s record-length analysis is retained separately in `validat
 6. Treat oil-film comparison as qualitative consistency only.
 7. Do not interpret a near-zero SAI as proof of instantaneous bilateral symmetry.
 8. Do not interpret binary or hierarchical pressure states as direct instantaneous separation topology.
+9. Treat the 12-to-6 tap comparison as a spatial-subsampling sensitivity analysis, not as proof of complete spatial convergence.
 
 ## MATLAB requirements
 
@@ -301,6 +369,7 @@ Some measured-data validation routines additionally use Statistics and Machine L
 - The pressure-channel calibration values are retained from the original supplied MATLAB implementation.
 - The final histogram/SR/VR AT logic is kept separate from the earlier GMM/BIC/Otsu comparison branch.
 - AT-BM pressure states are operational pressure descriptors and should not be interpreted as direct reconstructions of instantaneous separation or reattachment topology.
+- The present spatial-subsampling analysis assesses the robustness of the large-scale transition characterization; it does not establish complete spatial convergence of the surface-pressure field.
 
 ## License
 
