@@ -174,7 +174,7 @@ dominant PDF peak displacement, used to distinguish changes in state location fr
 An additional split-half comparison evaluates the first and second 60-s portions of each complete record independently.
 
 <p align="center">
-  <img src="figures/R1_global_record_length_convergence.pdf"
+  <img src="figures/R1_global_record_length_convergence.png"
        alt="Full-dataset record-length convergence"
        width="90%">
 </p>
@@ -182,7 +182,7 @@ An additional split-half comparison evaluates the first and second 60-s portions
 Figure 5. Record-length convergence across all 588 tap-Reynolds-number combinations. TVD and JSD decrease systematically as the observation duration increases, while the dominant PDF peak location is comparatively stable.
 
 <p align="center">
-  <img src="figures/R1_60s_metric_distributions.pdf"
+  <img src="figures/R1_60s_metric_distributions.png"
        alt="Distribution of 60-s convergence metrics"
        width="90%">
 </p>
