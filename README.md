@@ -134,7 +134,7 @@ The bootstrap analysis quantifies finite-sample statistical variability of the t
 
 It is distinct from the record-length convergence analysis described below because bootstrap resampling does not preserve the original contiguous temporal organization of the intermittent pressure signal.
 
-8. Full-dataset record-length convergence
+8. 
 
 A separate record-length convergence analysis was added to evaluate whether the 120-s acquisition duration used in the manuscript is sufficient for stable estimation of the pressure-coefficient PDFs.
 
@@ -174,7 +174,7 @@ dominant PDF peak displacement, used to distinguish changes in state location fr
 An additional split-half comparison evaluates the first and second 60-s portions of each complete record independently.
 
 <p align="center">
-  <img src="figures/R1_global_record_length_convergence.png"
+  <img src="figures/R1_global_record_length_convergence.pdf"
        alt="Full-dataset record-length convergence"
        width="90%">
 </p>
@@ -182,7 +182,7 @@ An additional split-half comparison evaluates the first and second 60-s portions
 Figure 5. Record-length convergence across all 588 tap-Reynolds-number combinations. TVD and JSD decrease systematically as the observation duration increases, while the dominant PDF peak location is comparatively stable.
 
 <p align="center">
-  <img src="figures/R1_60s_metric_distributions.png"
+  <img src="figures/R1_60s_metric_distributions.pdf"
        alt="Distribution of 60-s convergence metrics"
        width="90%">
 </p>
